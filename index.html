@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Crab Database</title>
+    <style>
+       
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #1a1a1a; 
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+            padding: 20px;
+            box-sizing: border-box;
+        }
+
+      
+        .container {
+            background-color: #262626;
+            padding: 40px 30px;
+            border-radius: 16px;
+            border: 3px solid #ff5500;
+            box-shadow: 0 10px 30px rgba(255, 68, 0, 0.3);
+            text-align: center;
+            max-width: 550px;
+            width: 100%;
+        }
+
+       
+        h2, h3 {
+            color: #ff3333; 
+            margin-top: 0;
+            margin-bottom: 20px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        h3 {
+            font-size: 18px;
+            color: #ff5500;
+            margin-top: 25px;
+        }
+
+        
+        .main-facts {
+            text-align: left;
+            background-color: #111;
+            padding: 20px;
+            border-left: 5px solid #ff3333;
+            border-radius: 8px;
+            margin-bottom: 30px;
+        }
+
+        .fact-item {
+            margin-bottom: 15px;
+            font-size: 16px;
+            color: #e0e0e0;
+            line-height: 1.5;
+        }
+
+        .fact-item strong {
+            color: #ff5500; 
+        }
+
+        .fact-item em {
+            color: #ff3333; 
+            font-style: normal;
+            font-weight: bold;
+        }
+
+        
+        input[type="password"] {
+            width: 80%;
+            padding: 12px;
+            font-size: 18px;
+            background-color: #111;
+            border: 2px solid #ff5500;
+            border-radius: 8px;
+            color: #fff;
+            outline: none;
+            text-align: center;
+            transition: border-color 0.3s, box-shadow 0.3s;
+        }
+
+        input[type="password"]:focus {
+            border-color: #ff3333;
+            box-shadow: 0 0 10px rgba(255, 51, 51, 0.5);
+        }
+
+      
+        .submit-btn {
+            margin-top: 15px;
+            background-color: #ff3333;
+            color: white;
+            border: none;
+            padding: 12px 28px;
+            font-size: 15px;
+            font-weight: bold;
+            text-transform: uppercase;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: background 0.2s;
+        }
+
+        .submit-btn:hover {
+            background-color: #ff5500;
+        }
+
+       
+        .error-msg {
+            color: #ff3333;
+            font-size: 14px;
+            margin-top: 12px;
+            height: 20px;
+            font-weight: bold;
+        }
+
+       
+        .secret-link {
+            display: inline-block;
+            margin-top: 15px;
+            background-color: #ff5500; 
+            color: #111;
+            text-decoration: none;
+            padding: 15px 30px;
+            font-size: 18px;
+            font-weight: bold;
+            text-transform: uppercase;
+            border-radius: 8px;
+            box-shadow: 0 4px 15px rgba(255, 85, 0, 0.4);
+            transition: background 0.2s, transform 0.1s;
+        }
+
+        .secret-link:hover {
+            background-color: #ff3333;
+            color: white;
+        }
+
+        
+        .hidden {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h2> Crab Information </h2>
+        <div class="main-facts">
+            <div class="fact-item"><strong>1.</strong> Crabs live on the beach.</div>
+            <div class="fact-item"><strong>3.</strong> Crabs have claws.</div>
+            <div class="fact-item"><strong>7.</strong> Crabs have shells.</div>
+            <div class="fact-item"><strong>4.</strong> crabs are <em>not always red</em> many are green, blue, or brown when alive, and only turn red after being cooked.</div>
+            <div class="fact-item"><strong>19.</strong> crabs are living</div>
+        </div>
+
+        <hr style="border: 1px solid #333; margin: 20px 0;">
+
+        <div id="lock-screen">
+            <h3>Want More Crab Facts?</h3>
+            <input type="password" id="code-input" placeholder="Enter the 6-digit code" maxlength="6">
+            <br>
+            <button class="submit-btn" onclick="checkCode()">Enter for crab facts</button>
+            <div id="error" class="error-msg"></div>
+        </div>
+
+        <div id="secret-content" class="hidden">
+            <h3 style="color: #00ff66;"> Yay!</h3>
+            <a href="Crab.html" class="secret-link">More crab facts</a>
+        </div>
+    </div>
+
+    <script>
+        function checkCode() {
+            const userInput = document.getElementById('code-input').value;
+            const errorDiv = document.getElementById('error');
+            const lockScreen = document.getElementById('lock-screen');
+            const secretContent = document.getElementById('secret-content');
+
+         
+            const correctCode = "137419";
+
+            if (userInput === correctCode) {
+             
+                lockScreen.classList.add('hidden');
+                secretContent.classList.remove('hidden');
+            } else {
+                errorDiv.textContent = "a.";
+                document.getElementById('code-input').value = ""; 
+            }
+        }
+
+        
+        document.getElementById('code-input').addEventListener('keypress', function(event) {
+            if (event.key === 'Enter') {
+                checkCode();
+            }
+        });
+    </script>
+
+</body>
+</html>
